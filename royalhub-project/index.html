@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RoyalHub — Royal Square Financial</title>
+<meta name="description" content="RoyalHub: your wealth, your protection, one place.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============================================================
+     AUTH SCREEN
+     ============================================================ -->
+<div id="screen-auth">
+  <div class="auth-container">
+    <form class="auth-form" id="login-form">
+      <!-- Header with logo -->
+      <div class="auth-header">
+        <img src="assets/logo/RoyalSquareLogo.jpg" alt="Royal Square Financial" class="auth-logo-img">
+        <div class="auth-header-text">
+          <h3>RoyalHub</h3>
+          <p>Royal Square Financial · FSP 29370</p>
+        </div>
+      </div>
+
+      <!-- Main content -->
+      <h2>Welcome</h2>
+      <p class="sub">Your wealth. Your protection. One place.</p>
+
+      <!-- Role selector -->
+      <div class="role-selector">
+        <button type="button" class="role-option active" data-role="client">
+          Client Access
+        </button>
+        <button type="button" class="role-option" data-role="admin">
+          Adviser Portal
+        </button>
+      </div>
+
+      <!-- Email/ID field -->
+      <div class="field">
+        <label for="email-input">Email or ID number</label>
+        <input type="text" id="email-input" placeholder="you@example.co.za" required>
+      </div>
+
+      <!-- Password field -->
+      <div class="field">
+        <label for="password-input">Password</label>
+        <input type="password" id="password-input" placeholder="••••••••" required>
+      </div>
+
+      <!-- Links -->
+      <div class="auth-links">
+        <a href="#">Forgot password?</a>
+        <a href="#">Need help?</a>
+      </div>
+
+      <!-- Sign in button -->
+      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      <button type="button" class="btn btn-secondary btn-block" style="margin-top:10px;">Continue with verified mobile</button>
+
+  
+
+      <!-- Demo credentials -->
+      <div class="demo-box">
+        <strong>Demo credentials (hackathon only)</strong>
+        Client: lerato.demo@example.co.za · Admin: adviser@royal.co.za · Password: demo-password
+        <div style="margin-top:8px;"><button type="button" class="btn btn-tertiary btn-sm" id="fill-demo-btn" style="padding:6px 10px;">Fill demo credentials</button></div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============================================================
+     LOADING TRANSITION
+     ============================================================ -->
+<div id="screen-loading" style="display:none;">
+  <div class="loader-ring"></div>
+  <div class="loader-text" id="loader-text">Preparing your financial overview...</div>
+</div>
+
+<!-- ============================================================
+     APP SHELL
+     ============================================================ -->
+<div id="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <img src="assets/logo/RoyalSquareLogo.jpg" alt="Royal Square Financial" class="sidebar-logo-img">
+      <div>
+        <div class="brand-name">RoyalHub</div>
+        <div class="brand-sub">Royal Square Financial</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+    <div class="sidebar-footer">
+      <div class="secure-note">
+        <svg class="icon icon-sm" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px;"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div>
+          <strong>Secure portal</strong>
+          <span>Your information is protected</span>
+        </div>
+      </div>
+      <button class="sidebar-logout-btn" id="logout-btn">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Log out
+      </button>
+    </div>
+  </aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation" title="Toggle navigation"><span></span><span></span><span></span></button>
+        <h3 id="topbar-title">Dashboard</h3>
+      </div>
+      <div class="topbar-right">
+        <div class="search-box">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" placeholder="Search RoyalHub...">
+        </div>
+        <button class="icon-btn" id="open-notif-btn" aria-label="Notifications">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+          <span class="notif-badge" id="notif-bell-badge"></span>
+        </button>
+        <button class="icon-btn" id="open-assist-btn" aria-label="Royal Assist">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 3l1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6z"/></svg>
+        </button>
+        <div class="avatar" id="topbar-avatar">LL</div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="screen-view active" id="screen-dashboard"></div>
+      <div class="screen-view" id="screen-goals"></div>
+      <div class="screen-view" id="screen-reminders"></div>
+      <div class="screen-view" id="screen-requests"></div>
+      <div class="screen-view" id="screen-claims"></div>
+      <div class="screen-view" id="screen-documents"></div>
+      <div class="screen-view" id="screen-profile"></div>
+      <div class="screen-view" id="screen-adviser-dashboard"></div>
+      <div class="screen-view" id="screen-adviser-clients"></div>
+    </main>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav"></nav>
+</div>
+
+<!-- ============================================================
+     OVERLAYS: modal, drawers, toasts
+     ============================================================ -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" id="modal-root"></div>
+</div>
+
+<div id="drawer-scrim"></div>
+<aside id="assist-drawer"></aside>
+<aside id="notif-drawer"></aside>
+
+<div id="toast-wrap"></div>
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script src="data/demo-data.js"></script>
+<script src="components/navigation.js"></script>
+<script src="components/dashboard.js"></script>
+<script src="components/goals.js"></script>
+<script src="components/reminders.js"></script>
+<script src="components/claims.js"></script>
+<script src="components/requests.js"></script>
+<script src="components/documents.js"></script>
+<script src="components/assistant.js"></script>
+<script src="components/adviser.js"></script>
+<script src="components/admin-dashboard.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
